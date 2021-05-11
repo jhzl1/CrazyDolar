@@ -21,6 +21,7 @@ const App = () => {
         <Switch>
           {/* <Route path="/" exact>
           </Route> */}
+          {/* comentario x */}
           <Route path="/login">
             <Login />
           </Route>
