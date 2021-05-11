@@ -6,28 +6,6 @@ import MenuApp from "./MenuApp";
 import Colombia from "../components/img/colombia.png";
 import ModalCompartir from "./ModalCompartir";
 
-const processDat2a = (data) => {
-  const newData = {
-    fecha: moment().format("LL"),
-    hora: moment().format("h:mm a"),
-    monedas: [
-      {
-        name: "Dolar",
-        icon: (
-          <i
-            className="fas fa-dollar-sign"
-            style={{ color: "#85BB65", fontSize: "30px" }}
-          ></i>
-        ),
-        price: data.USD.transferencia,
-        nameCoinDestination: "Bs",
-      },
-    ],
-  };
-
-  return newData;
-};
-
 const Cotizaciones = () => {
   const [data, setData] = useState({
     dia: null,
