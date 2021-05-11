@@ -35,7 +35,9 @@ const Navegation = (props) => {
           <Nav>
             <NavLink
               className="nav-link"
-              to="/" /* onClick={() => closeSesion()} */
+              to="/"
+              /* onClick={() => closeSesion()} */
+              //  Aqui debe invalidar token y eliminar de localstorage y redirigir a /login
             >
               Cerrar Sesión
             </NavLink>
