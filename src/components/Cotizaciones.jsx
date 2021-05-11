@@ -6,7 +6,7 @@ import MenuApp from "./MenuApp";
 import Colombia from "../components/img/colombia.png";
 import ModalCompartir from "./ModalCompartir";
 
-const processData = (data) => {
+const processDat2a = (data) => {
   const newData = {
     fecha: moment().format("LL"),
     hora: moment().format("h:mm a"),
