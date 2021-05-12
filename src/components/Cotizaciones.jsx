@@ -8,8 +8,8 @@ import ModalCompartir from "./ModalCompartir";
 
 const Cotizaciones = () => {
   const [data, setData] = useState({
-    dia: null,
     fecha: null,
+    hora: null,
     monedas: [],
   });
 
@@ -20,6 +20,7 @@ const Cotizaciones = () => {
       );
       const dataObtained = res.data;
       setData({
+        ...data,
         fecha: moment().format("LL"),
         hora: moment().format("h:mm a"),
         monedas: [

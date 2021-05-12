@@ -7,7 +7,7 @@ import { auth } from "./firebase";
 const Navegation = (props) => {
   const [isAuthent, setIsAuthent] = useState("");
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (auth.currentUser) {
       console.log("hay usuario");
       setIsAuthent("hay vida");
@@ -15,7 +15,7 @@ const Navegation = (props) => {
       console.log(" no hay usuario");
       props.history.push("/login");
     }
-  }, [props.history]);
+  }, [props.history]); */
 
   return (
     <Navbar bg="dark" variant="dark" expand="lg" className="p-2">
