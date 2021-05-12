@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { NavLink, withRouter } from "react-router-dom";
 import logo from "./img/crazydollar.jpg";
@@ -22,18 +22,22 @@ const Navegation = (props) => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
         <Nav>
-          <NavLink className="nav-link" to="/" onClick={auth.logout}>
-            Cerrar Sesión
-          </NavLink>
-        </Nav>
+          {!auth.isLogged() && (
+            <>
+              <NavLink className="nav-link" to="/login">
+                Ingresar
+              </NavLink>
+              <NavLink to="/registro" className="nav-link">
+                Regístrate
+              </NavLink>
+            </>
+          )}
 
-        <Nav>
-          <NavLink className="nav-link" to="/login">
-            Ingresar
-          </NavLink>
-          <NavLink to="/registro" className="nav-link">
-            Regístrate
-          </NavLink>
+          {auth.isLogged() && (
+            <NavLink className="nav-link" to="/" onClick={auth.logout}>
+              Cerrar Sesión
+            </NavLink>
+          )}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
