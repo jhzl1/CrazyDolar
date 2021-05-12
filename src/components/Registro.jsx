@@ -3,10 +3,11 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { authFire } from "./firebase";
 import { withRouter } from "react-router-dom";
+import useAuth from "./auth/useAuth";
 
 const Registro = (props) => {
   const [errorFromFirebase, setErrorFromFirebase] = useState("");
-
+  const auth = useAuth();
   const numericRegex = /(?=.*[0-9])/;
 
   const sendUser = useCallback(
@@ -19,7 +20,7 @@ const Registro = (props) => {
           password
         );
         console.log(res);
-        localStorage.isAuthent = true;
+        auth.login(res.user.uid);
         props.history.push("/app");
       } catch (e) {
         console.log(e);
@@ -30,7 +31,7 @@ const Registro = (props) => {
         }
       }
     },
-    [props.history]
+    [props.history, auth]
   );
 
   return (

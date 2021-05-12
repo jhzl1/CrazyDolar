@@ -23,6 +23,9 @@ const AuthProvider = ({ children }) => {
     login(id) {
       setIsAuthenticated({ id: id, username: "Usuario Prueba " });
     },
+    register(id) {
+      setIsAuthenticated({ id: id });
+    },
     logout() {
       setIsAuthenticated("");
       localStorage.removeItem("auth_token");
