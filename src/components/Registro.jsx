@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { auth } from "./firebase";
+import { authFire } from "./firebase";
 import { withRouter } from "react-router-dom";
 
 const Registro = (props) => {
@@ -14,7 +14,10 @@ const Registro = (props) => {
       console.log(email, password);
       setErrorFromFirebase("");
       try {
-        const res = await auth.createUserWithEmailAndPassword(email, password);
+        const res = await authFire.createUserWithEmailAndPassword(
+          email,
+          password
+        );
         console.log(res);
         localStorage.isAuthent = true;
         props.history.push("/app");

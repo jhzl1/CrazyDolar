@@ -1,32 +1,31 @@
 import React, { useCallback, useState } from "react";
-import { auth } from "./firebase";
+import { authFire } from "./firebase";
 import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
 import { Divider } from "primereact/divider";
 import { withRouter } from "react-router-dom";
+import useAuth from "./auth/useAuth";
 
 const Login = (props) => {
   const [emailLogin, setEmailLogin] = useState("");
   const [passwordLogin, setPasswordLogin] = useState("");
   const [error, setError] = useState("");
+  const auth = useAuth();
 
   const login = useCallback(
     async (e) => {
       e.preventDefault();
       try {
-        const res = await auth.signInWithEmailAndPassword(
+        const res = await authFire.signInWithEmailAndPassword(
           emailLogin,
           passwordLogin
         );
         setEmailLogin("");
         setPasswordLogin("");
         setError("");
-
-        // jwt → json web token
-        localStorage.setItem("auth_token", res.token);
-
-        props.history.push("/app");
         console.log(res);
+        auth.login(res.user.uid);
+        props.history.push("/app");
       } catch (e) {
         if (e.code === "auth/user-not-found") {
           setError("El correo que estás ingresando no se encuentra registrado");
@@ -39,7 +38,7 @@ const Login = (props) => {
         }
       }
     },
-    [passwordLogin, emailLogin, props.history]
+    [passwordLogin, emailLogin, props.history, auth]
   );
 
   return (

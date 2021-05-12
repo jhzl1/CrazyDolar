@@ -104,7 +104,6 @@ const Cotizaciones = () => {
 
   useEffect(() => {
     moment.locale("es");
-
     getData();
   }, []);
 
