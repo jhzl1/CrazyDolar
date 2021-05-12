@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# Aplicación en desarrollo
+
+Creada por Omar Jahaziel Campos. 2021.
+
+# Aplicación creada con Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
